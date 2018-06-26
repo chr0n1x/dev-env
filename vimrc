@@ -31,11 +31,8 @@ set foldlevelstart=99
 
 " default colors
 au BufNewFile,BufRead *.timer         set filetype=sh
-au BufNewFile,BufRead *.singularityrc set filetype=ruby
-au BufNewFile,BufRead *.buildrc       set filetype=ruby
 au BufNewFile,BufRead *.go            set filetype=c
 au BufNewFile,BufRead Dockerfile      set filetype=sh
-au BufNewFile,BufRead *.berg          set filetype=json
 
 if &compatible
  set nocompatible
@@ -66,6 +63,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-markdown')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('Shougo/neocomplete.vim')
+  call dein#add('rhysd/vim-crystal')
 
   " Goyo & Zenroom
   call dein#add('amix/vim-zenroom2')
@@ -154,15 +152,4 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 let s:python = system("which python")
 if !empty(s:python)
   map <Leader>j :%!python -m json.tool<CR>
-endif
-
-" processing-lang
-let s:processing = system("which processing-java")
-if !empty(s:processing)
-  nnoremap <Leader>p
-  \ :!rm -rf /tmp/processing/*
-  \ &&
-  \ processing-java --output=/tmp/processing --sketch=%:p:h
-  \ --force
-  \ --run<CR>
 endif
