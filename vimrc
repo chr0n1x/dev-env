@@ -64,6 +64,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('rhysd/vim-crystal')
+  call dein#add('elixir-editors/vim-elixir')
 
   " Goyo & Zenroom
   call dein#add('amix/vim-zenroom2')
