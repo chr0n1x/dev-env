@@ -6,12 +6,16 @@ Config files and stuff. Everything in a docker container so that I can dev howev
 # Bash Alias
 
 ```bash
-function dev-env {
-  if docker version; then
-    docker run -v $(pwd):/root/workspace --workdir /root/workspace --rm -ti chr0n1x/dev-env
+function dex {
+  if docker version &> /dev/null; then
+    docker run -v $(pwd):/root/workspace --workdir /root/workspace --rm -ti "$@"
   else
     echo "Docker isn't installed, man."
   fi
+}
+
+function dvim {
+    dex --entrypoint "vim" chr0n1x/dev-env
 }
 ```
 
