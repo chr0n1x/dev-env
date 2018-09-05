@@ -1,7 +1,11 @@
 dev-env
 =========
 
-Config files and stuff. Everything in a docker container so that I can dev however I want without nuking my host-local-machine thingy.
+[![Build Status](https://travis-ci.org/chr0n1x/dev-env.svg?branch=master)](https://travis-ci.org/chr0n1x/dev-env)
+[![](https://images.microbadger.com/badges/image/chr0n1x/dev-env.svg)](https://microbadger.com/images/chr0n1x/dev-env "dev-env")
+[![](https://images.microbadger.com/badges/version/chr0n1x/dev-env.svg)](https://microbadger.com/images/chr0n1x/dev-env "Get your own version badge on microbadger.com")
+
+My VIM setup, wrapped into a docker container (automated build). Did this because I've had to switch machines WAY too many times.
 
 # Bash Alias
 
