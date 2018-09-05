@@ -154,3 +154,9 @@ let s:python = system("which python")
 if !empty(s:python)
   map <Leader>j :%!python -m json.tool<CR>
 endif
+
+" force ctrlp to cache results AND use silver-searcher
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
