@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+# don't need but maybe in the future...?
+language: ruby
+
+script:
+  - docker build .
