@@ -1,5 +1,4 @@
 set t_Co=256
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set tabstop=4
 set shiftwidth=2
 set softtabstop=2
@@ -82,7 +81,6 @@ if dein#load_state('~/.cache/dein')
   let NERDTreeShowHidden=1
   let NERDTreeKeepTreeInNewTab=1
   let g:nerdtree_tabs_open_on_gui_startup=0
-  autocmd VimEnter * wincmd l
 
   " Unite
   call dein#add('mileszs/ack.vim')
@@ -105,9 +103,14 @@ if dein#load_state('~/.cache/dein')
  call dein#save_state()
 endif
 
-filetype plugin indent on
-syntax enable
-set termguicolors
+" sweet-spot configuration to make sure that syntax + colors does not cause
+" lag when moving around in the buffer
+set regexpengine=1
+syntax on
+if (has("termguicolors"))
+  set termguicolors
+endif
+let base16colorspace=256
 let ayucolor='dark'
 colorscheme ayu
 
