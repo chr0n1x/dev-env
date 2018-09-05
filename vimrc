@@ -40,30 +40,31 @@ endif
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
- call dein#begin('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+  call dein#add('~/.cache/dein')
 
- call dein#add('~/.cache/dein')
- call dein#add('Shougo/deoplete.nvim')
- if !has('nvim')
-   call dein#add('roxma/nvim-yarp')
-   call dein#add('roxma/vim-hug-neovim-rpc')
- endif
+  " nvim specific things (just in case I migrate)
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
 
-  call dein#add('easymotion/vim-easymotion')
-  call dein#add('ayu-theme/ayu-vim')
-  call dein#add('mkarmona/colorsbox')
-  call dein#add('bling/vim-airline')
-  call dein#add('kien/ctrlp.vim')
-  call dein#add('sjl/gundo.vim')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('tpope/vim-surround')
-  call dein#add('Yggdroot/indentLine')
-  call dein#add('gregsexton/MatchTag')
-  call dein#add('tpope/vim-markdown')
+  " basic editor flair
   call dein#add('airblade/vim-gitgutter')
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('rhysd/vim-crystal')
+  call dein#add('ayu-theme/ayu-vim')
+  call dein#add('bling/vim-airline')
+  call dein#add('easymotion/vim-easymotion')
   call dein#add('elixir-editors/vim-elixir')
+  call dein#add('gregsexton/MatchTag')
+  call dein#add('kien/ctrlp.vim')
+  call dein#add('mkarmona/colorsbox')
+  call dein#add('rhysd/vim-crystal')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('sjl/gundo.vim')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-markdown')
+  call dein#add('Yggdroot/indentLine')
 
   " Goyo & Zenroom
   call dein#add('amix/vim-zenroom2')
