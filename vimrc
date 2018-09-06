@@ -51,7 +51,6 @@ if dein#load_state('~/.cache/dein')
   endif
 
   " basic editor flair
-  call dein#add('airblade/vim-gitgutter')
   call dein#add('ayu-theme/ayu-vim')
   call dein#add('bling/vim-airline')
   call dein#add('easymotion/vim-easymotion')
