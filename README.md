@@ -5,16 +5,30 @@ dev-env
 [![](https://images.microbadger.com/badges/image/chr0n1x/dev-env.svg)](https://microbadger.com/images/chr0n1x/dev-env "layer-metadata")
 [![](https://images.microbadger.com/badges/version/chr0n1x/dev-env.svg)](https://hub.docker.com/r/chr0n1x/dev-env/ "docker-hub")
 
-My VIM setup, wrapped into a docker container (automated build). Did this because I've had to switch machines WAY too many times.
+My VIM setup, wrapped into a docker container (automated build). Also includes other common dev tools such as [the silver searcher (aka: ag)](https://github.com/ggreer/the_silver_searcher). A full list is forthcoming since I'm still in the process of adding things to this project.
 
-# Bash Alias
+I did this because I've had to switch machines WAY too many times. Another reason though is because I wanted a similar development experience between my MacOS, Linux & Windows machines so I figured that docker was the way to go.
+
+# Aliases
+
+I personally like to have two separate aliases, only one of which directly uses this container. The first is the `dex` alias (short for `docker exec`). I like to use this as a shortcut for:
+
+```bash
+docker run -v $(pwd):/root/workspace --workdir /root/workspace --rm -ti "$@"
+```
+
+This allows me to mount my current working directory into `/root/workspace` for any arbitrary container. So for example if I am working on a python project and I'm in that project directory, I just use `dex python:3.6` and I am automatically dropped into a shell environment that has all development tools necessary to work on that project (e.g.: python runtime, `pip`, etc).
+
+However, because my VIM installation is a bit more involved and needs tools that may be separate from whatever language I'm working in I have the `dvim` alias (short for `docker-vim`). This alias uses `dex` in conjunction with this container.
+
+## Bash
 
 ```bash
 function dex {
   if docker version &> /dev/null; then
     docker run -v $(pwd):/root/workspace --workdir /root/workspace --rm -ti "$@"
   else
-    echo "Docker isn't installed, man."
+    echo "Docker isn't installed or has not been started."
   fi
 }
 
@@ -23,7 +37,7 @@ function dvim {
 }
 ```
 
-# Powershell Alias
+## Powershell
 
 ```powershell
 function docker-enter-fx {
@@ -31,17 +45,18 @@ function docker-enter-fx {
 }
 Set-Alias dex docker-enter-fx
 
-function docker-enter-dev-env {
-  dex "chr0n1x/dev-env"
+function docker-enter-vim {
+  dex --entrypoint "vim" "chr0n1x/dev-env"
 }
-Set-Alias dev-env docker-enter-dev-env
+Set-Alias dvim docker-enter-vim
 ```
 
-I would recommend using [cmder](https://github.com/cmderdev/cmder) on Windows.
-The script above is an example as to how you can use this. First function allowing you to load your current working directory (code and stuffs) into the appropriate docker container for all your code (so you can build dependencies, run the code, etc) and the second uses the same fx to just throw all of that code into an environment with this vim installation.
+I would recommend using [cmder](https://github.com/cmderdev/cmder) on Windows for the sake of ease-of-use & portability.
 
 To install you just have to copy & paste it into `<CMDER INSTALLATION DIR>/config/profile.d/<script-name>.ps1` and cmder will auto-load it.
 
 # Notes
 
-I recommend using this setup with your native docker settings maxed for memory (on MacOS the memory/cpu allowance for docker is only a fraction of what your system is capable of). This is so that using `hjkl` doesn't stutter, and other basic functions like `Ctrl+p` don't take **forever**. I max out both CPU + Memory so that vim runs @ near-native speeds
+I recommend using this setup with your native docker settings maxed for memory (on MacOS the memory/cpu allowance for docker is only a fraction of what your system is capable of). I max out both CPU + Memory so that vim runs @ near-native speeds.
+
+**DISCLAIMER**: `autocmd` spam and other VIM plugins like gitgutter severely slow this setup down just due to the file mount & virtualization overhead.
