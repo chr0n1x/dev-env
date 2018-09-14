@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 # copied from https://github.com/Ketouem/ag-alpine/blob/master/Dockerfile
 RUN apk --update add git automake autoconf make g++ pcre-dev xz-dev
