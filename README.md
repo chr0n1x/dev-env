@@ -53,7 +53,30 @@ Set-Alias dvim docker-enter-vim
 
 I would recommend using [cmder](https://github.com/cmderdev/cmder) on Windows for the sake of ease-of-use & portability.
 
-To install you just have to copy & paste it into `<CMDER INSTALLATION DIR>/config/profile.d/<script-name>.ps1` and cmder will auto-load it.
+To install you just have to copy & paste the script above into `<CMDER INSTALLATION DIR>/config/profile.d/<script-name>.ps1` and cmder will auto-load it.
+
+If instead you want to use the [Windows Powershell](https://en.wikipedia.org/wiki/PowerShell) (can be installed via the Windows Store App), you can add the powershell script above into `C:\Users\<USERNAME>\Documents\WindowsPowerShell\profile.ps1`. Then, after opening up Powershell, you may get an error:
+
+```
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+. : File C:\Users\<USERNAME>\Documents\WindowsPowerShell\profile.ps1 cannot be loaded because running scripts is disabled
+on this system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:3
++ . 'C:\Users\<USERNAME>\Documents\WindowsPowerShell\profile.ps1'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+
+Kind of makes sense - Windows is blocking the arbitrary autoloading of scripts in your profile. To allow the autoloading of scripts for your account, you could run the following command (sourced from [this StackOverflow answer](https://stackoverflow.com/a/26955050/158584) - read to know what it's doing):
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
 # Notes
 
