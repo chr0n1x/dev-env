@@ -69,6 +69,8 @@ let g:limelight_priority = -1
 
 " startup deoplete
 let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " denite startup configs
 let g:denite_source_history_yank_enable = 1
