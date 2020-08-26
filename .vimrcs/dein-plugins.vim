@@ -11,11 +11,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
-  let g:deoplete#enable_at_startup = 1
-  " denite
   call dein#add('Shougo/denite.nvim')
-  let g:denite_source_history_yank_enable = 1
-  let g:denite_source_grep_default_opts = '-irnHl --exclude-dir "\.git"'
 
   " basic editor flair
   call dein#add('airblade/vim-gitgutter')
@@ -71,29 +67,33 @@ let g:limelight_default_coefficient = 0.7
 let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
 
-" deite
-" call denite#filters#matcher_default#use(['matcher_fuzzy'])
-" Define mappings
-autocmd FileType denite call s:denite_mappings()
-function! s:denite_mappngs() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
+" startup deoplete
+let g:deoplete#enable_at_startup = 1
+
+" denite startup configs
+let g:denite_source_history_yank_enable = 1
+let g:denite_source_grep_default_opts = '-irnHl --exclude-dir "\.git"'
+
+" denite mappings
+autocmd FileType denite call s:denite_buffer_mappings()
+function! s:denite_buffer_mappings() abort
   nnoremap <silent><buffer><expr> q
   \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
+
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
+
+  " opening buffer results and whatnot
+  nnoremap <silent><buffer><expr> t
+  \ denite#do_map('do_action', 'tabopen')
+  nnoremap <silent><buffer><expr> s
+  \ denite#do_map('do_action', 'vsplit')
 endfunction
-" call denite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep', 'ignore_globs', split(&wildignore, ','))
-" nnoremap <leader>g :<C-u>Unite -auto-preview -default-action=tabopen               grep:.<CR>
-" nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -default-action=open outline<CR>
-" nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=mru -default-action=vsplit   file_mru<CR>
-" nnoremap <leader>y :<C-u>Unite -buffer-name=yank -default-action=vsplit            history/yank<CR>
+nnoremap <leader>g :<C-u>DeniteProjectDir grep<CR>
+nnoremap <leader>o :<C-u>Denite outline<CR>
 
 " ctrlp settings
 nnoremap <leader>t :CtrlP<CR>
