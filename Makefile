@@ -13,8 +13,8 @@ install-dein:
 
 
 install-vimrcs:
-	cp -R .vimrcs ~/.
-	cp .vimrc ~/.
+	ln -vs $(shell pwd)/.vimrcs $(shell echo $$HOME)
+	ln -vs $(shell pwd)/.vimrc $(shell echo $$HOME)/.vimrc
 
 
 install: install-dein
