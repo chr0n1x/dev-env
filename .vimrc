@@ -59,3 +59,22 @@ source ~/.vimrcs/dein-plugins.vim
 " lag when moving around in the buffer
 set regexpengine=1
 syntax on
+
+" to get this to work - had to:
+"
+"   brew install ruby
+"
+" - make sure that macOS ruby is >= 2.4
+" - then make sure that this version of ruby is in the user PATH:
+"
+"   export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
+"
+" (yes, that's sadge-times)
+"
+" THEN install rubocop and related gems...
+"
+"   gem install rubocop rubocop-rails
+let g:ale_linters = { 'ruby': [ 'rubocop' ] }
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
