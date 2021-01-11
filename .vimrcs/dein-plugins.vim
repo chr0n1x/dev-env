@@ -12,6 +12,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
   call dein#add('Shougo/denite.nvim')
+  call dein#add('mileszs/ack.vim')
 
   " basic editor flair
   call dein#add('airblade/vim-gitgutter')
@@ -100,6 +101,9 @@ nnoremap <leader>o :<C-u>Denite outline<CR>
 " ctrlp settings
 nnoremap <leader>t :CtrlP<CR>
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+
+" silver_searcher specific settings
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ackprg = 'ag --vimgrep --ignore-dir log'
 endif
