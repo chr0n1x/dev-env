@@ -14,6 +14,6 @@ RUN ./build.sh && chmod +x ./ag && mv ./ag /usr/bin/.
 
 ADD     . /root/tmp
 WORKDIR /root/tmp
-RUN     make install && rm -rf /root/.vimrc-install-bootstrap /root/tmp
+RUN     make hard-install && rm -rf /root/.vimrc-install-bootstrap /root/tmp
 
 ENTRYPOINT ["bash"]
