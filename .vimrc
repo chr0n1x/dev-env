@@ -1,36 +1,37 @@
-set t_Co=256
-set tabstop=4
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set gdefault
-set number
-set mouse=c
-set encoding=utf-8
+filetype indent on
+set autoindent
 set backspace=indent,eol,start
+set clipboard=unnamed
+set cursorline
+set encoding=utf-8
+set expandtab
+set formatoptions=qrn1
+set foldlevelstart=99
+set foldmethod=indent
+set gdefault
+set guifont=Consolas\ 20
+set hidden
+set hlsearch
 set ignorecase
 set incsearch
-set hlsearch
-set showmatch
-set cursorline
-set ttyfast
+set laststatus=2
+set mouse=n
+set nocompatible
+set number
 set ruler
-set formatoptions=qrn1
+set shiftwidth=2
+set softtabstop=2
+set showmatch
 set scrolloff=3
 set showmode
 set showcmd
-set hidden
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+set smartindent
+set t_Co=256
+set tabstop=4
+set ttyfast
 set wildmenu
 set wildmode=list:longest
-set guifont=Consolas\ 20
-set laststatus=2
-set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
-set foldmethod=indent
-set foldlevelstart=99
-set nocompatible
-set smartindent
-set autoindent
-filetype indent on
 
 " default colors
 au BufNewFile,BufRead *.timer         set filetype=sh
