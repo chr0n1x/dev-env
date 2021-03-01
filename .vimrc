@@ -45,6 +45,7 @@ endif
 " key bindings
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 nnoremap <Leader>s :/\<<C-r><C-w>\>/<CR>
+nnoremap <Leader>p "*P<CR>
 " nmap <Leader>\ :noh<CR>
 map <space>n :tabnext<CR>
 map <space>b :tabprevious<CR>
