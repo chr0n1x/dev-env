@@ -6,5 +6,5 @@
 " pipes an entire file into the python3 JSON tool, pretty-formatting it
 let s:python = system("which python3")
 if !empty(s:python)
-  map <Leader>j :%!python3 -m json.tool<CR>
+  map <Leader>j :%!python3 -m json.tool --sort-keys<CR>
 endif

@@ -9,8 +9,10 @@ if dein#load_state('~/.cache/dein')
 
   " vim 8+ autocomplete & fuzzy
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#add('Shougo/denite.nvim')
   call dein#add('mileszs/ack.vim')
 

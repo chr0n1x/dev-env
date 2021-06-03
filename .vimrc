@@ -1,7 +1,6 @@
 filetype indent on
 set autoindent
 set backspace=indent,eol,start
-set clipboard=unnamed
 set cursorline
 set encoding=utf-8
 set expandtab
@@ -15,7 +14,7 @@ set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
-set mouse=n
+set mouse=c
 set nocompatible
 set number
 set ruler
@@ -34,9 +33,10 @@ set wildmenu
 set wildmode=list:longest
 
 " default colors
-au BufNewFile,BufRead *.timer         set filetype=sh
-au BufNewFile,BufRead *.go            set filetype=c
-au BufNewFile,BufRead Dockerfile      set filetype=sh
+au BufNewFile,BufRead *.timer    set filetype=sh
+au BufNewFile,BufRead *.go       set filetype=c
+au BufNewFile,BufRead Dockerfile set filetype=sh
+au BufNewFile,BufRead *.cr       set filetype=ruby
 
 if &compatible
  set nocompatible
