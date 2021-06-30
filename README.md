@@ -9,6 +9,14 @@ My VIM setup, wrapped into a docker container (automated build). Also includes o
 
 I did this because I've had to switch machines WAY too many times. Another reason though is because I wanted a similar development experience between my MacOS, Linux & Windows machines so I figured that docker was the way to go.
 
+# Requirements
+
+Specific plugins require `python`. So make sure that you have `python` installed, along with `pynvim` or `neovim` via something like:
+
+```sh
+pip install pynvim
+```
+
 # Aliases
 
 I personally like to have two separate aliases, only one of which directly uses this container. The first is the `dex` alias (short for `docker exec`). I like to use this as a shortcut for:
