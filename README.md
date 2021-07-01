@@ -9,6 +9,8 @@ My VIM setup, wrapped into a docker container (automated build). Also includes o
 
 I did this because I've had to switch machines WAY too many times. Another reason though is because I wanted a similar development experience between my MacOS, Linux & Windows machines so I figured that docker was the way to go.
 
+If you just want to run `vim` though, `make install` should do everything for you.
+
 # Requirements
 
 Specific plugins require `python`. So make sure that you have `python` installed, along with `pynvim` or `neovim` via something like:
@@ -17,7 +19,7 @@ Specific plugins require `python`. So make sure that you have `python` installed
 pip install pynvim
 ```
 
-For Debian-based systems, you can just `apt install vim-gtk`
+For Debian-based systems, you just try installing `apt install vim-gtk` or `apt install vim-nox` to install a version of `vim` with python support.
 
 # Aliases
 
