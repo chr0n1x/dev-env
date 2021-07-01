@@ -17,6 +17,8 @@ Specific plugins require `python`. So make sure that you have `python` installed
 pip install pynvim
 ```
 
+For Debian-based systems, you can just `apt install vim-gtk`
+
 # Aliases
 
 I personally like to have two separate aliases, only one of which directly uses this container. The first is the `dex` alias (short for `docker exec`). I like to use this as a shortcut for:
