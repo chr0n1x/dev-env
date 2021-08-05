@@ -21,6 +21,8 @@ pip install pynvim
 
 For Debian-based systems, you just try installing `apt install vim-gtk` or `apt install vim-nox` to install a version of `vim` with python support.
 
+For MacOS - `brew install macvim` should save you a bunch of time.
+
 # Aliases
 
 I personally like to have two separate aliases, only one of which directly uses this container. The first is the `dex` alias (short for `docker exec`). I like to use this as a shortcut for:
