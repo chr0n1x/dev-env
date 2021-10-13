@@ -19,13 +19,17 @@ link-vimrcs:
 	ln -vs $(shell pwd)/.vimrc $(shell echo $$HOME)/.vimrc
 
 
+link-profiles:
+	ln -vs $(shell pwd)/.zshrc $(shell echo $$HOME)/.zshrc
+
+
 dein-base-setup:
 	vim --not-a-term -n -u ~/.vimrcs/install-bootstrap.vim \
       -c "silent! call dein#install()|q"
 	vim --not-a-term -n -u ~/.vimrc -c "silent! call dein#update()|q"
 
 
-install: install-dein link-vimrcs dein-base-setup
+install: install-dein link-vimrcs dein-base-setup link-profiles
 
 
 copy-vimrcs:
