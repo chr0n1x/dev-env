@@ -13,15 +13,23 @@ If you just want to run `vim` though, `make install` should do everything for yo
 
 # Requirements
 
-Specific plugins require `python`. So make sure that you have `python` installed, along with `pynvim` or `neovim` via something like:
+## MacOS
 
-```sh
-pip install pynvim
-```
+For MacOS - `brew install macvim` should save you a bunch of time.
+
+## Other-Nix
 
 For Debian-based systems, you just try installing `apt install vim-gtk` or `apt install vim-nox` to install a version of `vim` with python support.
 
-For MacOS - `brew install macvim` should save you a bunch of time.
+## Required Plugins
+
+Specific plugins require `python`. So make sure that you have `python` installed, along with `pynvim` or `neovim` via something like:
+
+```sh
+pip3 install pynvim
+```
+
+You may need to use the specific executable of `pip` that your user has access to (e.g.: `pip3.9 install --user pynvim`)
 
 # Aliases
 
