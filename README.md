@@ -1,7 +1,7 @@
 dev-env
 =========
 
-[![Build Status](https://api.travis-ci.com/chr0n1x/dev-env.svg?branch=main)](https://app.travis-ci.com/github/chr0n1x/dev-env/branches)
+[![Build Status](https://api.travis-ci.com/chr0n1x/dev-env.svg?branch=main)](https://app.travis-ci.com/github/chr0n1x/dev-env)
 [![](https://images.microbadger.com/badges/image/chr0n1x/dev-env.svg)](https://microbadger.com/images/chr0n1x/dev-env "layer-metadata")
 [![](https://images.microbadger.com/badges/version/chr0n1x/dev-env.svg)](https://hub.docker.com/r/chr0n1x/dev-env/ "docker-hub")
 
