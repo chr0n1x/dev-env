@@ -3,28 +3,24 @@ dev-env
 
 [![Build Status](https://api.travis-ci.com/chr0n1x/dev-env.svg?branch=main)](https://app.travis-ci.com/github/chr0n1x/dev-env)
 
-My VIM setup, wrapped into a docker container (automated build). Also includes other common dev tools such as [the silver searcher (aka: ag)](https://github.com/ggreer/the_silver_searcher). A full list is forthcoming since I'm still in the process of adding things to this project.
+My Neovim and Zsh setups, wrapped into a docker container (automated build). Also includes other common dev tools such as [the silver searcher (aka: ag)](https://github.com/ggreer/the_silver_searcher). A full list is forthcoming since I'm still in the process of adding things to this project.
 
 I did this because I've had to switch machines WAY too many times. Another reason though is because I wanted a similar development experience between my MacOS, Linux & Windows machines so I figured that docker was the way to go.
 
-If you just want to run `vim` though, `make install` should do everything for you.
+If you just want to run `vim` though, `make` should do everything for you.
+
+This also includes my `.zshrc` and `.hyper` configs. So take a quick look at the `Makefile` before you start installing things.
 
 # Requirements
 
-## MacOS
-
-For MacOS - `brew install macvim` should save you a bunch of time.
-
-## Other-Nix
-
-For Debian-based systems, you just try installing `apt install vim-gtk` or `apt install vim-nox` to install a version of `vim` with python support.
+NEOVIM. Just use Neovim, it'll save you a lot of configuration trouble.
 
 ## Required Plugins
 
 Specific plugins require `python`. So make sure that you have `python` installed, along with `pynvim` or `neovim` via something like:
 
 ```sh
-pip3 install pynvim
+pip3 install pynvim neovim
 ```
 
 You may need to use the specific executable of `pip` that your user has access to (e.g.: `pip3.9 install --user pynvim`)
@@ -41,7 +37,7 @@ This allows me to mount my current working directory into `/root/workspace` for 
 
 However, because my VIM installation is a bit more involved and needs tools that may be separate from whatever language I'm working in I have the `dvim` alias (short for `docker-vim`). This alias uses `dex` in conjunction with this container.
 
-## Bash
+## Bash / Zsh
 
 ```bash
 function dex {
