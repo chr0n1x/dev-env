@@ -1,4 +1,4 @@
-default: check-deps install
+default: install-zsh install-nvim
 
 build:
 	docker build --tag chr0n1x/dev-env:latest .
@@ -15,4 +15,4 @@ check-deps:
 
 include make/*.mk
 
-install: install-zsh install-nvim
+host-install: check-deps install-zsh install-nvim
