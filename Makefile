@@ -11,9 +11,8 @@ install-dein:
     sh ~/installer.sh ~/.cache/dein && \
     rm ~/installer.sh
 
-dein-base-setup:
-	-nvim --headless -n -u ~/.vimrcs/install-bootstrap.vim \
-       -c "call dein#install()|q"
+dein-setup:
+	-nvim --headless -n -u ~/.config/nvim/init.vim -c "call dein#install()|q"
 	-nvim --headless -n -u ~/.config/nvim/init.vim -c "call dein#update()|q"
 	-nvim --headless -n -u ~/.config/nvim/init.vim -c "UpdateRemotePlugins|q"
 
@@ -35,4 +34,4 @@ link-profiles:
 	if [ -f ~/.zshrc ]; then mv ~/.zshrc ~/.zshrc.BAK; fi
 	-ln -vs $(shell pwd)/.zshrc $(shell echo $$HOME)/.zshrc
 
-install: install-dein link-vimrcs install-nord install-zsh link-profiles dein-base-setup
+install: install-dein link-vimrcs install-nord install-zsh link-profiles dein-setup
