@@ -4,6 +4,8 @@ build:
 	docker build --tag chr0n1x/dev-env:latest .
 
 check-deps:
+	# silver surfer optional for host systems...?
+	# which ag
 	which curl
 	which direnv
 	which git
