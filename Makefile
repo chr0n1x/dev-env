@@ -1,9 +1,7 @@
 default: install
 
-
 build:
 	docker build --tag chr0n1x/dev-env:latest .
-
 
 # TODO: lock to a version. master has a bugfix as of writing this
 install-dein:
@@ -14,23 +12,27 @@ install-dein:
     rm ~/installer.sh
 
 dein-base-setup:
-	vim --not-a-term -n -u ~/.vimrcs/install-bootstrap.vim \
-      -c "silent! call dein#install()|q"
-	vim --not-a-term -n -u ~/.vimrc -c "silent! call dein#update()|q"
+	nvim --headless -n -u ~/.vimrcs/install-bootstrap.vim \
+      -c "call dein#install()|q"
+	nvim --headless -n -u ~/.config/nvim/init.vim -c "call dein#update()|q"
+	nvim --headless -n -u ~/.config/nvim/init.vim -c "UpdateRemotePlugins|q"
+
+link-vimrcs:
+	mkdir -p ~/.config/nvim
+	ln -vs $(shell pwd)/.vimrcs $(shell echo $$HOME)
+	ln -vs $(shell pwd)/.vimrc $(shell echo $$HOME)/.config/nvim/init.vim
 
 install-nord:
 	git clone https://github.com/arcticicestudio/nord-dircolors.git ~/Code/arcticicestudio/nord-dircolors
-	ln -vsr "~/Code/arcticicestudio/nord-dir_colors/src/dir_colors" ~/.dir_colors
+	ln -vs "~/Code/arcticicestudio/nord-dir_colors/src/dir_colors" ~/.dir_colors
 
+# https://github.com/ohmyzsh/ohmyzsh#unattended-install
 install-zsh:
-	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-link-vimrcs:
-	ln -vs $(shell pwd)/.vimrcs $(shell echo $$HOME)
-	ln -vs $(shell pwd)/.vimrc $(shell echo $$HOME)/.vimrc
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	rm ~/.zshrc
 
 link-profiles:
 	if [ -f ~/.zshrc ]; then mv ~/.zshrc ~/.zshrc.BAK; fi
 	ln -vs $(shell pwd)/.zshrc $(shell echo $$HOME)/.zshrc
 
-install: install-dein link-vimrcs dein-base-setup install-nord install-zsh link-profiles
+install: install-dein link-vimrcs install-nord install-zsh link-profiles dein-base-setup

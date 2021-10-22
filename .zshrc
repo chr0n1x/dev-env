@@ -15,10 +15,11 @@ function dex {
 }
 
 function dvim {
-    dex --entrypoint "vim" chr0n1x/dev-env
+    dex --entrypoint "nvim" chr0n1x/dev-env
 }
 
 alias dc="docker compose"
+alias vim="nvim"
 
 # brew installs tab autocompletion scripts for awscli, git, hub, etc
 # this loops through and loads those scripts
