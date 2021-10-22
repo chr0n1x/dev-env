@@ -1,3 +1,11 @@
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_THEME="robbyrussell"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+
 function dex {
   if docker version &> /dev/null; then
     docker run -v $(pwd):/root/workspace --workdir /root/workspace --rm -ti "$@"
@@ -32,4 +40,14 @@ if [ -z "${SHELL}" ]; then
   SHELL=bash
 fi
 
-eval "$(direnv hook ${SHELL})"
+if [ -f ~/.dir_colors ]; then
+  test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook ${SHELL})"
+fi
+
+if command -v z >/dev/null 2>&1; then
+  source $(which z)
+fi
