@@ -14,6 +14,7 @@ install-omzsh:
 link-profiles:
 	if [ -f ~/.zshrc ]; then mv ~/.zshrc ~/.zshrc.BAK; fi
 	-ln -vs $(shell pwd)/.zshrc $(shell echo $$HOME)/.zshrc
-	-ln -vs $(shell pwd)/shell-startup $(shell echo $$HOME)/.shell-startup
+	mkdir -p ~/.config/zsh
+	-ln -vs $(shell pwd)/zsh/scripts $(shell echo $$HOME)/.config/zsh/scripts
 
 install-zsh: install-nord install-omzsh link-profiles

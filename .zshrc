@@ -9,6 +9,7 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -Uz compinit && compinit
 
-for script in $(ls ~/.shell-startup); do
-  source "~/.shell-startup/$script"
+# TODO: figure out why autoload didn't work here even w/ fpath
+for script in $(ls ~/.config/zsh/scripts); do
+  source ~/.config/zsh/scripts/$script
 done
