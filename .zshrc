@@ -1,54 +1,14 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -Uz compinit && compinit
 
-function dex {
-  if docker version &> /dev/null; then
-    docker run -v $(pwd):/root/workspace --workdir /root/workspace --rm -ti "$@"
-  else
-    echo "Docker isn't installed or has not been started."
-  fi
-}
-
-function dvim {
-    dex --entrypoint "nvim" chr0n1x/dev-env
-}
-
-alias dc="docker compose"
-alias vim="nvim"
-
-# brew installs tab autocompletion scripts for awscli, git, hub, etc
-# this loops through and loads those scripts
-# WARNING: this may be insecure so use this ONLY if you know exactly what
-#          you've installed on your system! If you're not sure, you can still
-#          source each of the files individually/explicitly
-if command -v brew >/dev/null 2>&1; then
-  brew_prefix="$(brew --prefix)"
-  for i in $(ls "$brew_prefix/etc/profile.d/"); do
-    source "${brew_prefix}/etc/profile.d/$i"
-  done
-fi
-
-if [ "${SHELL}" = "/bin/zsh" ]; then
-  autoload -Uz compinit && compinit
-fi
-
-if [ -z "${SHELL}" ]; then
-  SHELL=bash
-fi
-
-if [ -f ~/.dir_colors ]; then
-  test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
-fi
-
-if command -v direnv >/dev/null 2>&1; then
-  eval "$(direnv hook ${SHELL})"
-fi
-
-if command -v z >/dev/null 2>&1; then
-  source $(which z)
-fi
+for script in $(ls ~/.shell-startup); do
+  source "~/.shell-startup/$script"
+done
