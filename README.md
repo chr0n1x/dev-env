@@ -2,8 +2,6 @@ dev-env
 =========
 
 [![Build Status](https://api.travis-ci.com/chr0n1x/dev-env.svg?branch=main)](https://app.travis-ci.com/github/chr0n1x/dev-env)
-[![](https://images.microbadger.com/badges/image/chr0n1x/dev-env.svg)](https://microbadger.com/images/chr0n1x/dev-env "layer-metadata")
-[![](https://images.microbadger.com/badges/version/chr0n1x/dev-env.svg)](https://hub.docker.com/r/chr0n1x/dev-env/ "docker-hub")
 
 My VIM setup, wrapped into a docker container (automated build). Also includes other common dev tools such as [the silver searcher (aka: ag)](https://github.com/ggreer/the_silver_searcher). A full list is forthcoming since I'm still in the process of adding things to this project.
 
