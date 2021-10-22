@@ -12,10 +12,10 @@ install-dein:
     rm ~/installer.sh
 
 dein-base-setup:
-	nvim --headless -n -u ~/.vimrcs/install-bootstrap.vim \
-      -c "call dein#install()|q"
-	nvim --headless -n -u ~/.config/nvim/init.vim -c "call dein#update()|q"
-	nvim --headless -n -u ~/.config/nvim/init.vim -c "UpdateRemotePlugins|q"
+	-nvim --headless -n -u ~/.vimrcs/install-bootstrap.vim \
+       -c "call dein#install()|q"
+	-nvim --headless -n -u ~/.config/nvim/init.vim -c "call dein#update()|q"
+	-nvim --headless -n -u ~/.config/nvim/init.vim -c "UpdateRemotePlugins|q"
 
 link-vimrcs:
 	-mkdir -p ~/.config/nvim
