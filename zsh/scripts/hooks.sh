@@ -21,8 +21,8 @@ fi
 # ohmyzsh sets up an alias...
 if command -v z >/dev/null 2>&1; then
   if command -v _z > /dev/null 2>&1; then
-  ¦ source $(which _z)
+    source $(which _z)
   else
-  ¦ source $(which z)
+    source $(which z)
   fi
 fi
