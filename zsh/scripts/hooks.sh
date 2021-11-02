@@ -18,6 +18,11 @@ if command -v direnv >/dev/null 2>&1; then
   eval "$(direnv hook ${SHELL})"
 fi
 
+# ohmyzsh sets up an alias...
 if command -v z >/dev/null 2>&1; then
-  source $(which z)
+  if command -v _z > /dev/null 2>&1; then
+  ¦ source $(which _z)
+  else
+  ¦ source $(which z)
+  fi
 fi
