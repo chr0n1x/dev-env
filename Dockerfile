@@ -8,19 +8,20 @@ RUN git clone --depth 1 --single-branch \
 WORKDIR ./the_silver_searcher
 RUN CFLAGS="-fcommon -D_GNU_SOURCE -lpthread" ./build.sh
 
-FROM alpine:3.13 AS devenv
+# OHHHH BOY
+FROM alpine:edge AS devenv
 
 RUN apk update && \
     apk add make zsh neovim git coreutils curl \
             python3 py-pip alpine-sdk python3-dev pcre-dev && \
     sed -i 's/ash/zsh/g' /etc/passwd && \
-    pip install pynvim neovim
+    pip install neovim
 
 COPY --from=agbuild ./the_silver_searcher/ag .
 RUN chmod +x ./ag && mv ./ag /usr/bin/.
 
 ADD     . /root/Code/chr0n1x/dev-env
 WORKDIR /root/Code/chr0n1x/dev-env
-RUN     make
+# RUN     make
 
 ENTRYPOINT ["zsh"]

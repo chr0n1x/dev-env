@@ -21,8 +21,13 @@ dev:
 	docker run --rm -ti \
 	  -v $(shell pwd):/workspace \
 	  -w /workspace \
-	  --entrypoint sh $(tag)
+	  --entrypoint zsh $(tag)
 
 include make/*.mk
 
+
 host-install: check-deps install-zsh install-nvim
+
+macos-install:
+	which brew /dev/null || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	brew install ag direnv git gh nvim z zsh

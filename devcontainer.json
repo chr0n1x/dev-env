@@ -1,0 +1,5 @@
+{
+  "dockerFile": "Dockerfile",
+  "image": "deovim:latest",
+  "workspaceMount": "source=${localWorkspaceFolder}/,target=/workspace,type=bind"
+}
